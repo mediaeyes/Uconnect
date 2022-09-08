@@ -80,7 +80,7 @@ public class BannerActivity extends Activity {
                 "&ktv_id="+ 39879;
 
         setContentView(R.layout.activity_banner);
-        mWebView = findViewById(R.id.webView);
+        mWebView = (WebView) findViewById(R.id.webView);
         defaultSetting();
         mWebView.loadUrl(url);
 
