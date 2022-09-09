@@ -1,6 +1,6 @@
 package urekamedia.com.usdk.action;
 
-import androidx.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
 
 import urekamedia.com.usdk.interfaces.iVideo;
 import urekamedia.com.usdk.utils.Constants;

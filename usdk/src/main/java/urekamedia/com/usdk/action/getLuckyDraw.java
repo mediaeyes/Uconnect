@@ -1,6 +1,7 @@
 package urekamedia.com.usdk.action;
 
-import androidx.annotation.Nullable;
+
+import org.jetbrains.annotations.Nullable;
 
 import retrofit2.Call;
 import retrofit2.Callback;

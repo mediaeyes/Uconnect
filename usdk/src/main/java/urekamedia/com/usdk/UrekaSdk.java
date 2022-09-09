@@ -9,7 +9,8 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.provider.Settings;
 
-import androidx.annotation.Nullable;
+
+import org.jetbrains.annotations.Nullable;
 
 import urekamedia.com.usdk.action.getAdBanner;
 import urekamedia.com.usdk.interfaces.iBanner;

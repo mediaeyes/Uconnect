@@ -18,21 +18,19 @@ public class MainActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        times = times+1;
+        super.onCreate(savedInstanceState);
+        times = times + 1;
 
         String ktv_id = "398790";
         String box_id = "bxokara01";
         String song_id = "903840";
         boolean is_autoSong = false;
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
         //Insong banner
-        UrekaSdk.getBanner(ktv_id, box_id, times,this, new iBanner(){
+        UrekaSdk.getBanner(ktv_id, box_id, times, this, new iBanner() {
             @Override
             public void onSuccess(String result) {
-                Log.d("TAG-onSuccess-getBanner", "result: "+result);
+                Log.d("TAG-onSuccess-getBanner", "result: " + result);
             }
 
             @Override
@@ -42,22 +40,22 @@ public class MainActivity extends AppCompatActivity{
         });
 
         // luckydraw
-        UrekaSdk.getLuckyDraw(ktv_id, box_id, song_id, is_autoSong,this, new iLuckyDraw() {
+        UrekaSdk.getLuckyDraw(ktv_id, box_id, song_id, is_autoSong, this, new iLuckyDraw() {
             @Override
             public void onSuccess(adLuckyDraw luckyDraw) {
                 boolean status = luckyDraw.isStatus();
-                if(status){
+                if (status) {
                     int is_win = luckyDraw.getIs_win();
-                    if(is_win == 1){
+                    if (is_win == 1) {
                         // Banner trúng thưởng
-                        Log.d("TAG-onSuccess", "is_win: "+luckyDraw.getBanner());
-                        Log.d("TAG-onSuccess", "timeout: "+luckyDraw.getTimeout());
-                    }else{
+                        Log.d("TAG-onSuccess", "is_win: " + luckyDraw.getBanner());
+                        Log.d("TAG-onSuccess", "timeout: " + luckyDraw.getTimeout());
+                    } else {
                         // Banner không trúng thưởng
-                        Log.d("TAG-onSuccess", "is_not_win: "+luckyDraw.getBanner());
-                        Log.d("TAG-onSuccess", "timeout: "+luckyDraw.getTimeout());
+                        Log.d("TAG-onSuccess", "is_not_win: " + luckyDraw.getBanner());
+                        Log.d("TAG-onSuccess", "timeout: " + luckyDraw.getTimeout());
                     }
-                }else{
+                } else {
                     // không trúng thưởng, không trả banner
                 }
             }
@@ -72,8 +70,8 @@ public class MainActivity extends AppCompatActivity{
         UrekaSdk.getDefaultBanner(ktv_id, box_id, song_id, this, new iDefaultBanner() {
             @Override
             public void onSuccess(adDefaultBanner defaultBanner) {
-                Log.d("TAG-onSuccess", "defaultBanner: "+defaultBanner.getBanner());
-                Log.d("TAG-onSuccess", "defaultBanner: "+defaultBanner.getTimeout());
+                Log.d("TAG-onSuccess", "defaultBanner: " + defaultBanner.getBanner());
+                Log.d("TAG-onSuccess", "defaultBanner: " + defaultBanner.getTimeout());
             }
 
             @Override
@@ -86,7 +84,7 @@ public class MainActivity extends AppCompatActivity{
         UrekaSdk.getvideo(ktv_id, box_id, song_id, this, new iVideo() {
             @Override
             public void onSuccess(String result) {
-                Log.d("TAG-onSuccess-Video", "result: "+result);
+                Log.d("TAG-onSuccess-Video", "result: " + result);
             }
 
             @Override
