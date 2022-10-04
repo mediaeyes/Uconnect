@@ -18,6 +18,7 @@ import urekamedia.com.usdk.interfaces.iBanner;
 import urekamedia.com.usdk.interfaces.iDefaultBanner;
 import urekamedia.com.usdk.model.adBanner;
 import urekamedia.com.usdk.model.adDefaultBanner;
+import urekamedia.com.usdk.model.adInSong;
 import urekamedia.com.usdk.utils.Constants;
 
 public class getAdBanner {
@@ -53,7 +54,12 @@ public class getAdBanner {
                 adBanner banner = response.body();
                 if(banner!= null) {
                     String url = getUrl(banner, ktv_id);
-                    callback.onSuccess(url);
+                    adInSong adinsong = new adInSong();
+                    adinsong.setPosition(banner.getPosition());
+                    adinsong.setBanner(url);
+                    adinsong.setWidth(banner.getWidth());
+                    adinsong.setHeight(banner.getHeight());
+                    callback.onSuccess(adinsong);
                 }
             }
 
@@ -88,6 +94,7 @@ public class getAdBanner {
 
     public static Intent initialize(Intent intent, adBanner banner){
         intent.putExtra("ID", banner.getId());
+        intent.putExtra("position", banner.getPosition());
         intent.putExtra("position_type", banner.getPosition_type());
         intent.putExtra("position_x", banner.getPosition_x());
         intent.putExtra("position_y", banner.getPosition_y());
@@ -109,7 +116,7 @@ public class getAdBanner {
              url = Constants.BANNER_URL +
                     "?time_show=" +banner.getTime_show()+
                     "&deviceid=" +banner.getDevice()+
-                    "&position=" +banner.getPosition_type()+
+                    "&position=" +banner.getId()+
                     "&width=" +banner.getWidth()+
                     "&height=" +banner.getHeight()+
                     "&ktvads=" +banner.getType_ads()+

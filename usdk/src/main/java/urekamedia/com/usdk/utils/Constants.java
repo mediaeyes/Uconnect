@@ -8,5 +8,5 @@ public class Constants {
     public static final String API_ROUTE_AD_BANNER = "/api/getBannerBeatX";
     public static final String API_ROUTE_GET_LUCKYDRAW = "/api/getluckydraw";
     public static final String API_ROUTE_BANNER = "";
-    public static final String API_ROUTE_AD_VIDEO = "/getVideo";
+    public static final String API_ROUTE_AD_VIDEO = "/utivi/getVideo";
 }

@@ -11,6 +11,7 @@ import urekamedia.com.usdk.interfaces.iDefaultBanner;
 import urekamedia.com.usdk.interfaces.iLuckyDraw;
 import urekamedia.com.usdk.interfaces.iVideo;
 import urekamedia.com.usdk.model.adDefaultBanner;
+import urekamedia.com.usdk.model.adInSong;
 import urekamedia.com.usdk.model.adLuckyDraw;
 
 public class MainActivity extends AppCompatActivity{
@@ -29,8 +30,11 @@ public class MainActivity extends AppCompatActivity{
         //Insong banner
         UrekaSdk.getBanner(ktv_id, box_id, times, this, new iBanner() {
             @Override
-            public void onSuccess(String result) {
-                Log.d("TAG-onSuccess-getBanner", "result: " + result);
+            public void onSuccess(adInSong result) {
+                Log.d("TAG-onSuccess-position", "result: " + result.getPosition());
+                Log.d("TAG-onSuccess-getBanner", "result: " + result.getBanner());
+                Log.d("TAG-onSuccess-getWidth", "result: " + result.getWidth());
+                Log.d("TAG-onSuccess-getHeight", "result: " + result.getHeight());
             }
 
             @Override

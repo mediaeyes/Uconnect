@@ -18,6 +18,7 @@ import urekamedia.com.usdk.interfaces.iDefaultBanner;
 import urekamedia.com.usdk.interfaces.iLuckyDraw;
 import urekamedia.com.usdk.interfaces.iVideo;
 import urekamedia.com.usdk.model.adDefaultBanner;
+import urekamedia.com.usdk.model.adInSong;
 import urekamedia.com.usdk.model.adLuckyDraw;
 
 public class UrekaSdk {
@@ -39,7 +40,7 @@ public class UrekaSdk {
         getBannerAds(ktv_id, deviceid, times, new iBanner(){
 
             @Override
-            public void onSuccess(String result) {
+            public void onSuccess(adInSong result) {
                 callback.onSuccess(result);
             }
 

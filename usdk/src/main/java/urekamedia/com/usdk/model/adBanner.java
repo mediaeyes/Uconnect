@@ -2,6 +2,7 @@ package urekamedia.com.usdk.model;
 
 public class adBanner {
     private int id;
+    private String position;
     private int position_type;
     private int position_x;
     private int position_y;
@@ -15,28 +16,20 @@ public class adBanner {
     private String device;
     private int sendPostDevice;
 
-    public adBanner(int id, int position_type, int position_x, int position_y, int width, int height, int status, int type_ads, String code_unit, String code_position, int time_show, String device, int sendPostDevice) {
-        this.id = id;
-        this.position_type = position_type;
-        this.position_x = position_x;
-        this.position_y = position_y;
-        this.width = width;
-        this.height = height;
-        this.status = status;
-        this.type_ads = type_ads;
-        this.code_unit = code_unit;
-        this.code_position = code_position;
-        this.time_show = time_show;
-        this.device = device;
-        this.sendPostDevice = sendPostDevice;
-    }
-
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
     }
 
     public int getPosition_type() {
@@ -132,6 +125,23 @@ public class adBanner {
     }
 
     public void setSendPostDevice(int sendPostDevice) {
+        this.sendPostDevice = sendPostDevice;
+    }
+
+    public adBanner(int id, String position, int position_type, int position_x, int position_y, int width, int height, int status, int type_ads, String code_unit, String code_position, int time_show, String device, int sendPostDevice) {
+        this.id = id;
+        this.position = position;
+        this.position_type = position_type;
+        this.position_x = position_x;
+        this.position_y = position_y;
+        this.width = width;
+        this.height = height;
+        this.status = status;
+        this.type_ads = type_ads;
+        this.code_unit = code_unit;
+        this.code_position = code_position;
+        this.time_show = time_show;
+        this.device = device;
         this.sendPostDevice = sendPostDevice;
     }
 }
