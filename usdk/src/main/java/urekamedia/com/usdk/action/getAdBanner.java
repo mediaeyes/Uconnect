@@ -59,6 +59,8 @@ public class getAdBanner {
                     adinsong.setBanner(url);
                     adinsong.setWidth(banner.getWidth());
                     adinsong.setHeight(banner.getHeight());
+                    adinsong.setTime(banner.getTime());
+                    adinsong.setTime_show(banner.getTime_show());
                     callback.onSuccess(adinsong);
                 }
             }

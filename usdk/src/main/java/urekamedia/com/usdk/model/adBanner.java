@@ -13,8 +13,27 @@ public class adBanner {
     private String code_unit;
     private String code_position;
     private int time_show;
+    private int time;
     private String device;
     private int sendPostDevice;
+
+    public adBanner(int id, String position, int position_type, int position_x, int position_y, int width, int height, int status, int type_ads, String code_unit, String code_position, int time_show, int time, String device, int sendPostDevice) {
+        this.id = id;
+        this.position = position;
+        this.position_type = position_type;
+        this.position_x = position_x;
+        this.position_y = position_y;
+        this.width = width;
+        this.height = height;
+        this.status = status;
+        this.type_ads = type_ads;
+        this.code_unit = code_unit;
+        this.code_position = code_position;
+        this.time_show = time_show;
+        this.time = time;
+        this.device = device;
+        this.sendPostDevice = sendPostDevice;
+    }
 
     public int getId() {
         return id;
@@ -112,6 +131,14 @@ public class adBanner {
         this.time_show = time_show;
     }
 
+    public int getTime() {
+        return time;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
+    }
+
     public String getDevice() {
         return device;
     }
@@ -125,23 +152,6 @@ public class adBanner {
     }
 
     public void setSendPostDevice(int sendPostDevice) {
-        this.sendPostDevice = sendPostDevice;
-    }
-
-    public adBanner(int id, String position, int position_type, int position_x, int position_y, int width, int height, int status, int type_ads, String code_unit, String code_position, int time_show, String device, int sendPostDevice) {
-        this.id = id;
-        this.position = position;
-        this.position_type = position_type;
-        this.position_x = position_x;
-        this.position_y = position_y;
-        this.width = width;
-        this.height = height;
-        this.status = status;
-        this.type_ads = type_ads;
-        this.code_unit = code_unit;
-        this.code_position = code_position;
-        this.time_show = time_show;
-        this.device = device;
         this.sendPostDevice = sendPostDevice;
     }
 }

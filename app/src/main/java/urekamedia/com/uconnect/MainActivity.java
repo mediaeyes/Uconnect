@@ -35,6 +35,10 @@ public class MainActivity extends AppCompatActivity{
                 Log.d("TAG-onSuccess-getBanner", "result: " + result.getBanner());
                 Log.d("TAG-onSuccess-getWidth", "result: " + result.getWidth());
                 Log.d("TAG-onSuccess-getHeight", "result: " + result.getHeight());
+                // show banner sau bao nhiêu giây
+                Log.d("TAG-onSuccess-getTime", "result: " + result.getTime());
+                // show banner trong bao nhiêu giây
+                Log.d("TAG-onSuccess-Time_show", "result: " + result.getTime_show());
             }
 
             @Override

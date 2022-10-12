@@ -5,10 +5,8 @@ public class adInSong {
     private String banner;
     private int width;
     private int height;
-
-    public adInSong() {
-
-    }
+    private int time;
+    private int time_show;
 
     public String getPosition() {
         return position;
@@ -42,10 +40,23 @@ public class adInSong {
         this.height = height;
     }
 
-    public adInSong(String position, String banner, int width, int height) {
-        this.position = position;
-        this.banner = banner;
-        this.width = width;
-        this.height = height;
+    public int getTime() {
+        return time;
     }
+
+    public void setTime(int time) {
+        this.time = time;
+    }
+
+    public int getTime_show() {
+        return time_show;
+    }
+
+    public void setTime_show(int time_show) {
+        this.time_show = time_show;
+    }
+
+    public adInSong() {
+    }
+
 }
