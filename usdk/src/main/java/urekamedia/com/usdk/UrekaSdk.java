@@ -35,7 +35,7 @@ public class UrekaSdk {
         getAdBanner.init(1, android_id);
     }
 
-    public static void getBanner(String ktv_id, String deviceid, int times, Context context, @Nullable final iBanner callback){
+    public static void getBanner(String ktv_id, String deviceid, String songId, int times, Context context, @Nullable final iBanner callback){
         setContext(context);
         getBannerAds(ktv_id, deviceid, times, new iBanner(){
 

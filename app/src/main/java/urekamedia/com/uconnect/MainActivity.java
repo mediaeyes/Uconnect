@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity{
         boolean is_autoSong = false;
 
         //Insong banner
-        UrekaSdk.getBanner(ktv_id, box_id, times, this, new iBanner() {
+        UrekaSdk.getBanner(ktv_id, box_id, song_id, times, this, new iBanner() {
             @Override
             public void onSuccess(adInSong result) {
                 Log.d("TAG-onSuccess-position", "result: " + result.getPosition());
