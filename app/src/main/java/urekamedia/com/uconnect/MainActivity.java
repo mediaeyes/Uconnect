@@ -13,6 +13,7 @@ import urekamedia.com.usdk.interfaces.iVideo;
 import urekamedia.com.usdk.model.adDefaultBanner;
 import urekamedia.com.usdk.model.adInSong;
 import urekamedia.com.usdk.model.adLuckyDraw;
+import urekamedia.com.usdk.model.prerollVideo;
 
 public class MainActivity extends AppCompatActivity{
     private static int times = 0;
@@ -22,13 +23,16 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         times = times + 1;
 
-        String ktv_id = "398790";
-        String box_id = "bxokara01";
+//        String ktv_id = "66688";
+//        String box_id = "px66688";
+
+        String ktv_id = "7";
+        String box_id = "109204";
         String song_id = "903840";
         boolean is_autoSong = false;
 
         //Insong banner
-        UrekaSdk.getBanner(ktv_id, box_id, song_id, times, this, new iBanner() {
+        UrekaSdk.getBanner(ktv_id, box_id, song_id, 4, this, new iBanner() {
             @Override
             public void onSuccess(adInSong result) {
                 Log.d("TAG-onSuccess-position", "result: " + result.getPosition());
@@ -89,14 +93,16 @@ public class MainActivity extends AppCompatActivity{
         });
 
         //Video full Screen
-        UrekaSdk.getvideo(ktv_id, box_id, song_id, this, new iVideo() {
+        UrekaSdk.getVideo(ktv_id, box_id, song_id, this, new iVideo() {
             @Override
-            public void onSuccess(String result) {
-                Log.d("TAG-onSuccess-Video", "result: " + result);
+            public void onSuccess(prerollVideo video) {
+                Log.d("TAG-onSuccess-Video", "getTime_show: " + video.getTime_show());
+                Log.d("TAG-onSuccess-Video", "getUrl: " + video.getUrl());
             }
 
             @Override
             public void onError(Exception e) {
+                Log.d("TAG-onSuccess-Video", "Exception: " + e.getMessage());
 
             }
         });

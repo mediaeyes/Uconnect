@@ -8,6 +8,7 @@ import static urekamedia.com.usdk.action.getLuckyDraw.callLuckyDraw;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.provider.Settings;
+import android.util.Log;
 
 
 import org.jetbrains.annotations.Nullable;
@@ -20,6 +21,7 @@ import urekamedia.com.usdk.interfaces.iVideo;
 import urekamedia.com.usdk.model.adDefaultBanner;
 import urekamedia.com.usdk.model.adInSong;
 import urekamedia.com.usdk.model.adLuckyDraw;
+import urekamedia.com.usdk.model.prerollVideo;
 
 public class UrekaSdk {
 
@@ -81,16 +83,19 @@ public class UrekaSdk {
         });
     }
 
-    public static void getvideo(String ktv_id, String deviceid, String song_id, Context context, @Nullable final iVideo callback){
+    public static void getVideo(String ktv_id, String deviceid, String song_id, Context context, @Nullable final iVideo callback){
         callAdVideo(ktv_id, deviceid, song_id, new iVideo(){
 
             @Override
-            public void onSuccess(String result) {
-                callback.onSuccess(result);
+            public void onSuccess(prerollVideo video) {
+                Log.d("TAG-onSuccess-Video", "onSuccess");
+                callback.onSuccess(video);
+
             }
 
             @Override
             public void onError(Exception e) {
+                Log.d("TAG-onSuccess-Video", "onError");
                 callback.onError(e);
             }
         });

@@ -115,7 +115,7 @@ public class getAdBanner {
     public static String getUrl(adBanner banner, String ktv_id){
         String url = "";
         if(banner != null){
-             url = Constants.BANNER_URL +
+             url = Constants.BANNER_URL + Constants.API_ROUTE_BANNER +
                     "?time_show=" +banner.getTime_show()+
                     "&deviceid=" +banner.getDevice()+
                     "&position=" +banner.getId()+
