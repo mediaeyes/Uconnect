@@ -12,11 +12,20 @@ public class adInSong {
     }
 
     private String time_show;
+    private int time;
     private String position;
     private String vast_xml;
     private String banner_url;
     private String width;
     private String height;
+
+    public int getTime() {
+        return time;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
+    }
 
     public adInSong(String time_show, String position, String vast_xml, String banner_url, String width, String height) {
         this.time_show = time_show;

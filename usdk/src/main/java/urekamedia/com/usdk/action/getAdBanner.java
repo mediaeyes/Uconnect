@@ -21,12 +21,18 @@ public class getAdBanner {
             public void onResponse(Call<adBanner> call, Response<adBanner> response) {
                 adBanner banner = response.body();
                 if (banner != null) {
+                    int[] randomNumbers = { 30, 60 };
+                    java.util.Random rand = new java.util.Random();
+                    int Time = randomNumbers[rand.nextInt(randomNumbers.length)];
+
                     String type = banner.getType_ads();
                     adInSong inSong = new adInSong();
                     String position = banner.getPosition_type();
                     inSong.setTime_show(banner.getTime_show());
                     inSong.setHeight(banner.getHeight());
                     inSong.setWidth(banner.getWidth());
+                    inSong.setTime(Time);
+
                     if (type.equals("video")) {
                         inSong.setBanner_url(banner.getVast_xml());
                         inSong.setType_ads("video");

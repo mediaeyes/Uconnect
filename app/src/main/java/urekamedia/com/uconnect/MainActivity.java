@@ -71,13 +71,15 @@ public class MainActivity extends AppCompatActivity{
                 if(type.equals("banner")){
                     Log.d("TAG-InSong", "Width: " + inSong.getWidth());
                     Log.d("TAG-InSong", "Height: " + inSong.getHeight());
-                    Log.d("TAG-InSong", "Time Show: " + inSong.getTime_show());
+                    Log.d("TAG-InSong", "Time Show: " + inSong.getTime());
+                    Log.d("TAG-InSong", "Show in: " + inSong.getTime_show());
                     Log.d("TAG-InSong", "Position: " + inSong.getPosition());
                     Log.d("TAG-InSong", "Banner: " + inSong.getBanner_url());
                 }else if(type.equals("video")){
                     Log.d("TAG-InSong", "Width: " + inSong.getWidth());
                     Log.d("TAG-InSong", "Height: " + inSong.getHeight());
-                    Log.d("TAG-InSong", "Time Show: " + inSong.getTime_show());
+                    Log.d("TAG-InSong", "Time Show: " + inSong.getTime());
+                    Log.d("TAG-InSong", "Show in: " + inSong.getTime_show());
                     Log.d("TAG-InSong", "Position: " + inSong.getPosition());
                     Log.d("TAG-InSong", "Video: " + inSong.getBanner_url());
                 }
