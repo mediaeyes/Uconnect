@@ -8,12 +8,10 @@ import android.util.Log;
 import urekamedia.com.usdk.UrekaSdk;
 import urekamedia.com.usdk.interfaces.iBanner;
 import urekamedia.com.usdk.interfaces.iDefaultBanner;
-import urekamedia.com.usdk.interfaces.iLuckyDraw;
 import urekamedia.com.usdk.interfaces.iVideo;
-import urekamedia.com.usdk.model.adDefaultBanner;
+import urekamedia.com.usdk.model.adDefaultScreen;
 import urekamedia.com.usdk.model.adInSong;
-import urekamedia.com.usdk.model.adLuckyDraw;
-import urekamedia.com.usdk.model.prerollVideo;
+import urekamedia.com.usdk.model.adVideo;
 
 public class MainActivity extends AppCompatActivity{
     private static int times = 0;
@@ -23,52 +21,24 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         times = times + 1;
 
-//        String ktv_id = "66688";
-//        String box_id = "px66688";
-
-        String ktv_id = "7";
-        String box_id = "109204";
+        String ktv_id = "001";
+        String box_id = "001";
         String song_id = "903840";
-        boolean is_autoSong = false;
 
-        //Insong banner
-        UrekaSdk.getBanner(ktv_id, box_id, song_id, 4, this, new iBanner() {
+        //Default Screen
+        UrekaSdk.getDefaultBanner(ktv_id, box_id, 3, this, new iDefaultBanner() {
             @Override
-            public void onSuccess(adInSong result) {
-                Log.d("TAG-onSuccess-position", "result: " + result.getPosition());
-                Log.d("TAG-onSuccess-getBanner", "result: " + result.getBanner());
-                Log.d("TAG-onSuccess-getWidth", "result: " + result.getWidth());
-                Log.d("TAG-onSuccess-getHeight", "result: " + result.getHeight());
-                // show banner sau bao nhiêu giây
-                Log.d("TAG-onSuccess-getTime", "result: " + result.getTime());
-                // show banner trong bao nhiêu giây
-                Log.d("TAG-onSuccess-Time_show", "result: " + result.getTime_show());
-            }
-
-            @Override
-            public void onError(Throwable t) {
-
-            }
-        });
-
-        // luckydraw
-        UrekaSdk.getLuckyDraw(ktv_id, box_id, song_id, is_autoSong, this, new iLuckyDraw() {
-            @Override
-            public void onSuccess(adLuckyDraw luckyDraw) {
-                boolean status = luckyDraw.isStatus();
-                if (status) {
-                    int is_win = luckyDraw.getIs_win();
-                    if (is_win == 1) {
-                        // Banner trúng thưởng
-                        Log.d("TAG-onSuccess", "is_win: " + luckyDraw.getBanner());
-                        Log.d("TAG-onSuccess", "timeout: " + luckyDraw.getTimeout());
-                    } else {
-                        // Banner không trúng thưởng
-                        Log.d("TAG-onSuccess", "is_not_win: " + luckyDraw.getBanner());
-                        Log.d("TAG-onSuccess", "timeout: " + luckyDraw.getTimeout());
-                    }
-                } else {
-                    // không trúng thưởng, không trả banner
+            public void onSuccess(adDefaultScreen defaultBanner) {
+                String type = defaultBanner.getType_ads();
+                if(type.equals("banner")){
+                    Log.d("TAG-DefaultBanner", "Banner: " + defaultBanner.getBanner_url());
+                    Log.d("TAG-DefaultBanner", "Time Show: " + defaultBanner.getTime_show());
+                }else if(type.equals("video")){
+                    Log.d("TAG-DefaultBanner", "Video: " + defaultBanner.getBanner_url());
+                    Log.d("TAG-DefaultBanner", "Time Show: " + defaultBanner.getTime_show());
+                }else{
+                    // chạy video của ktv
+                    Log.d("TAG-DefaultBanner", "KTV VIDEO");
                 }
             }
 
@@ -78,33 +48,46 @@ public class MainActivity extends AppCompatActivity{
             }
         });
 
-        //Default Screen
-        UrekaSdk.getDefaultBanner(ktv_id, box_id, song_id, this, new iDefaultBanner() {
+        //Preroll Video
+        UrekaSdk.getPrerollVideo(ktv_id, box_id, this, new iVideo() {
+
             @Override
-            public void onSuccess(adDefaultBanner defaultBanner) {
-                Log.d("TAG-onSuccess", "defaultBanner: " + defaultBanner.getBanner());
-                Log.d("TAG-onSuccess", "defaultBanner: " + defaultBanner.getTimeout());
+            public void onSuccess(adVideo prerollVideo) {
+                Log.d("TAG-PrerollVideo", "Video: " + prerollVideo.getBanner_url());
+                Log.d("TAG-PrerollVideo", "Time Show: " + prerollVideo.getTime_show());
             }
 
             @Override
-            public void onError(Exception e) {
+            public void onError(Throwable t) {
+
+            }
+        });
+
+        //Insong Banner
+        UrekaSdk.getInsong(ktv_id, box_id, 2, song_id, this, new iBanner() {
+            @Override
+            public void onSuccess(adInSong inSong) {
+                String type = inSong.getType_ads();
+                if(type.equals("banner")){
+                    Log.d("TAG-InSong", "Width: " + inSong.getWidth());
+                    Log.d("TAG-InSong", "Height: " + inSong.getHeight());
+                    Log.d("TAG-InSong", "Time Show: " + inSong.getTime_show());
+                    Log.d("TAG-InSong", "Position: " + inSong.getPosition());
+                    Log.d("TAG-InSong", "Banner: " + inSong.getBanner_url());
+                }else if(type.equals("video")){
+                    Log.d("TAG-InSong", "Width: " + inSong.getWidth());
+                    Log.d("TAG-InSong", "Height: " + inSong.getHeight());
+                    Log.d("TAG-InSong", "Time Show: " + inSong.getTime_show());
+                    Log.d("TAG-InSong", "Position: " + inSong.getPosition());
+                    Log.d("TAG-InSong", "Video: " + inSong.getBanner_url());
+                }
+            }
+
+            @Override
+            public void onError(Throwable t) {
 
             }
         });
 
-        //Video full Screen
-        UrekaSdk.getVideo(ktv_id, box_id, song_id, this, new iVideo() {
-            @Override
-            public void onSuccess(prerollVideo video) {
-                Log.d("TAG-onSuccess-Video", "getTime_show: " + video.getTime_show());
-                Log.d("TAG-onSuccess-Video", "getUrl: " + video.getUrl());
-            }
-
-            @Override
-            public void onError(Exception e) {
-                Log.d("TAG-onSuccess-Video", "Exception: " + e.getMessage());
-
-            }
-        });
     }
 }

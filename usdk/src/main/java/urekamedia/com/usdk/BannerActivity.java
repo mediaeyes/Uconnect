@@ -70,57 +70,7 @@ public class BannerActivity extends Activity {
     }
 
     public void showBanner(Intent intent){
-        String url = Constants.BANNER_URL +
-                "?time_show=" +intent.getIntExtra("time_show", 1)+
-                "&deviceid=" +intent.getStringExtra("device")+
-                "&position=" +intent.getIntExtra("position_type", 0)+
-                "&width=" +intent.getIntExtra("width", 0)+
-                "&height=" +intent.getIntExtra("height", 0)+
-                "&ktvads=" +intent.getIntExtra("type_ads", 0)+
-                "&ktv_id="+ 39879;
-
-        setContentView(R.layout.activity_banner);
-        mWebView = (WebView) findViewById(R.id.webView);
-        defaultSetting();
-        mWebView.loadUrl(url);
-
-        closeAfter(intent.getIntExtra("time_show", 1));
 
     }
-
-    public void closeAfter(int finishTime){
-        handler =  new Handler();
-        myRunnable = new Runnable() {
-            public void run() {
-                finish();
-            }
-        };
-        handler.postDelayed(myRunnable, finishTime * 1000);
-    }
-
-    private void defaultSetting() {
-        WebSettings webSettings = mWebView.getSettings();
-        webSettings.setJavaScriptEnabled(true);
-        webSettings.setAllowContentAccess(true);
-        webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);
-        webSettings.setMediaPlaybackRequiresUserGesture(false);
-        mWebView.clearHistory();
-        mWebView.clearCache(true);
-        mWebView.setBackgroundColor(Color.TRANSPARENT);
-        mWebView.setWebViewClient(new WebViewClient() {
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                view.loadUrl(url);
-                return true;
-            }
-
-            @Override
-            public void onPageFinished(WebView view, String url) {
-                super.onPageFinished(view, url);
-            }
-
-        });
-    }
-
 
 }

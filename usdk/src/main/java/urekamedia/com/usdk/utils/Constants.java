@@ -1,12 +1,12 @@
 package urekamedia.com.usdk.utils;
 
-public class Constants {
-    public static final String API_CONFIG = "http://api-uconnect.urekamedia.com";
-    public static final String BANNER_URL = "http://api-uconnect.urekamedia.com";
+public interface Constants {
+    String PARTNER_ID = "2";
+    String PREFIX = "OK";
+    String VERSIONS = "1.0.0.0";
 
-    public static final String API_ROUTE_AD_CONFIG = "/uconnect/api/v1/getConfig";
-    public static final String API_ROUTE_AD_BANNER = "/api/getBannerPlayX";
-    public static final String API_ROUTE_GET_LUCKYDRAW = "/api/getluckydraw";
-    public static final String API_ROUTE_BANNER = "/utivi/getBanner";
-    public static final String API_ROUTE_AD_VIDEO = "/utivi/getVideo";
+    String DELIVERY = "http://api-uconnect.urekamedia.com";
+
+    String API_ROUTE_AD_CONFIG = "/api/getKTVAds";
+    String API_ROUTE_AD_BANNER = "/api/getBanner";
 }
