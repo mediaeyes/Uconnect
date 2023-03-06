@@ -12,6 +12,7 @@ import urekamedia.com.usdk.interfaces.iVideo;
 import urekamedia.com.usdk.model.adDefaultScreen;
 import urekamedia.com.usdk.model.adInSong;
 import urekamedia.com.usdk.model.adVideo;
+import urekamedia.com.usdk.model.adVideoPreroll;
 
 public class MainActivity extends AppCompatActivity{
     private static int times = 0;
@@ -50,11 +51,11 @@ public class MainActivity extends AppCompatActivity{
 
         //Preroll Video
         UrekaSdk.getPrerollVideo(ktv_id, box_id, this, new iVideo() {
-
             @Override
-            public void onSuccess(adVideo prerollVideo) {
-                Log.d("TAG-PrerollVideo", "Video: " + prerollVideo.getBanner_url());
-                Log.d("TAG-PrerollVideo", "Time Show: " + prerollVideo.getTime_show());
+            public void onSuccess(adVideoPreroll videoPreroll) {
+                Log.d("TAG-Preroll", "Video Player: " + videoPreroll.getVast_xml());
+                Log.d("TAG-Preroll", "Time Show Webview: " + videoPreroll.getTime_show());
+                Log.d("TAG-Preroll", "Isset Ad: " + videoPreroll.getIssetItem());
             }
 
             @Override

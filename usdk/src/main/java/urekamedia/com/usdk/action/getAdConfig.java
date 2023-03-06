@@ -11,6 +11,7 @@ import urekamedia.com.usdk.interfaces.iVideo;
 import urekamedia.com.usdk.model.adConfig;
 import urekamedia.com.usdk.model.adDefaultScreen;
 import urekamedia.com.usdk.model.adVideo;
+import urekamedia.com.usdk.model.adVideoPreroll;
 import urekamedia.com.usdk.utils.Constants;
 
 public class getAdConfig {
@@ -49,31 +50,26 @@ public class getAdConfig {
         });
     }
 
-    public static void getConfigVideo(final String ktv_id, final String device_id, final int position, final String type_show ,final int times, @Nullable final iVideo callback) {
+    public static void getConfigVideo(final String ktv_id, final String device_id, @Nullable final iVideo callback) {
         String ktvId = Constants.PREFIX + ktv_id;
         String deviceId = Constants.PREFIX + device_id;
-        ApiService.apiservice.getAdConfig(Constants.PARTNER_ID, ktvId, deviceId, position, type_show, times, Constants.VERSIONS).enqueue(new Callback<adConfig>() {
+        ApiService.apiservice.adVideoPreroll(Constants.PARTNER_ID, ktvId, deviceId, Constants.VERSIONS).enqueue(new Callback<adVideoPreroll>() {
+
             @Override
-            public void onResponse(Call<adConfig> call, Response<adConfig> response) {
-                adConfig config = response.body();
-                if (config != null) {
-                    String type = config.getType_ads();
-                    if (type.equals("video")) {
-                        adVideo adVideo = new adVideo();
-                        adVideo.setTime_show(config.getTime_show());
-                        adVideo.setBanner_url(config.getVast_xml());
-                        callback.onSuccess(adVideo);
-                    }else{
-                        adVideo adVideo = new adVideo();
-                        adVideo.setTime_show("0");
-                        adVideo.setBanner_url("");
-                        callback.onSuccess(adVideo);
-                    }
+            public void onResponse(Call<adVideoPreroll> call, Response<adVideoPreroll> response) {
+                adVideoPreroll video = response.body();
+                if(video != null){
+                    adVideoPreroll videoPreroll = new adVideoPreroll();
+                    videoPreroll.setTime_show(video.getTime_show());
+                    videoPreroll.setSound(video.getSound());
+                    videoPreroll.setVast_xml(video.getVast_xml());
+                    videoPreroll.setIssetItem(video.getIssetItem());
+                    callback.onSuccess(videoPreroll);
                 }
             }
 
             @Override
-            public void onFailure(Call<adConfig> call, Throwable t) {
+            public void onFailure(Call<adVideoPreroll> call, Throwable t) {
                 callback.onError(t);
             }
         });
