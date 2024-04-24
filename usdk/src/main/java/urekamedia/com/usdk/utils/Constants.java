@@ -1,8 +1,8 @@
 package urekamedia.com.usdk.utils;
 
 public interface Constants {
-    String PARTNER_ID = "2";
-    String PREFIX = "OK";
+    String PARTNER_ID = "8";
+    String PREFIX = "IP";
     String VERSIONS = "1.0.0.0";
 
     String DELIVERY = "http://api-uconnect.urekamedia.com";
