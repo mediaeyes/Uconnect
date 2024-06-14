@@ -5,7 +5,7 @@ public interface Constants {
     String PREFIX = "IP";
     String VERSIONS = "1.0.0.0";
 
-    String DELIVERY = "http://api-uconnect.urekamedia.com";
+    String DELIVERY = "https://delivery.uconnect.asia";
 
     String API_ROUTE_AD_CONFIG = "/api/getKTVAds";
     String API_ROUTE_AD_BANNER = "/api/getBanner";
