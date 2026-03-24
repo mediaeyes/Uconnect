@@ -1,6 +1,6 @@
 package urekamedia.com.usdk.action;
 
-import org.jetbrains.annotations.Nullable;
+//import org.jetbrains.annotations.Nullable;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -15,7 +15,7 @@ import urekamedia.com.usdk.model.adVideoPreroll;
 import urekamedia.com.usdk.utils.Constants;
 
 public class getAdConfig {
-    public static void getConfig(final String ktv_id, final String device_id, final int position, final String type_show ,final int times, @Nullable final iDefaultBanner callback) {
+    public static void getConfig(final String ktv_id, final String device_id, final int position, final String type_show ,final int times,  final iDefaultBanner callback) {
         String ktvId = Constants.PREFIX + ktv_id;
         String deviceId = Constants.PREFIX + device_id;
         ApiService.apiservice.getAdConfig(Constants.PARTNER_ID, ktvId, deviceId, position, type_show, times, Constants.VERSIONS).enqueue(new Callback<adConfig>() {
@@ -50,7 +50,7 @@ public class getAdConfig {
         });
     }
 
-    public static void getConfigVideo(final String ktv_id, final String device_id, @Nullable final iVideo callback) {
+    public static void getConfigVideo(final String ktv_id, final String device_id, final iVideo callback) {
         String ktvId = Constants.PREFIX + ktv_id;
         String deviceId = Constants.PREFIX + device_id;
         ApiService.apiservice.adVideoPreroll(Constants.PARTNER_ID, ktvId, deviceId, Constants.VERSIONS).enqueue(new Callback<adVideoPreroll>() {

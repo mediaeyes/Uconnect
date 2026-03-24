@@ -1,6 +1,6 @@
 package urekamedia.com.usdk.action;
 
-import org.jetbrains.annotations.Nullable;
+//import org.jetbrains.annotations.Nullable;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -12,7 +12,7 @@ import urekamedia.com.usdk.model.adInSong;
 import urekamedia.com.usdk.utils.Constants;
 
 public class getAdBanner {
-    public static void getInsong(final String ktv_id, final String device_id, final int times, final String song_id, @Nullable final iBanner callback) {
+    public static void getInsong(final String ktv_id, final String device_id, final int times, final String song_id, final iBanner callback) {
         String ktvId = Constants.PREFIX + ktv_id;
         String deviceId = Constants.PREFIX + device_id;
 

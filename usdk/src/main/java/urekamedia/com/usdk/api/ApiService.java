@@ -3,7 +3,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import okhttp3.OkHttpClient;
-import okhttp3.logging.HttpLoggingInterceptor;
+//import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -60,11 +60,11 @@ public interface ApiService {
 
 class RestClient {
     public OkHttpClient getClient() {
-        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
-        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+//        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+//        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient client = new OkHttpClient.Builder()
                 .addInterceptor(new NetworkConnectionInterceptor(UrekaSdk.getContext()))
-                .addInterceptor(logging)
+//                .addInterceptor(logging)
                 .build();
         return client;
     }

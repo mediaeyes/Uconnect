@@ -3,7 +3,7 @@ package urekamedia.com.usdk;
 
 import android.content.Context;
 
-import org.jetbrains.annotations.Nullable;
+//import org.jetbrains.annotations.Nullable;
 
 import urekamedia.com.usdk.action.getAdBanner;
 import urekamedia.com.usdk.action.getAdConfig;
@@ -28,7 +28,7 @@ public class UrekaSdk {
         mContext = context;
     }
 
-    public static void getDefaultBanner(String ktv_id, String device_id, int times, Context context, @Nullable final iDefaultBanner callback){
+    public static void getDefaultBanner(String ktv_id, String device_id, int times, Context context, final iDefaultBanner callback){
         setContext(context);
         int position = 3;
         String type_show = "ktvcenter";
@@ -46,7 +46,7 @@ public class UrekaSdk {
         });
     }
 
-    public static void getPrerollVideo(String ktv_id, String device_id, Context context, @Nullable final iVideo callback) {
+    public static void getPrerollVideo(String ktv_id, String device_id, Context context,  final iVideo callback) {
         setContext(context);
 
         getAdConfig.getConfigVideo(ktv_id, device_id, new iVideo(){
@@ -63,7 +63,7 @@ public class UrekaSdk {
         });
     }
 
-    public static void getInsong(String ktv_id, String device_id, int times, String song_id, Context context, @Nullable final iBanner callback){
+    public static void getInsong(String ktv_id, String device_id, int times, String song_id, Context context,  final iBanner callback){
         setContext(context);
         getAdBanner.getInsong(ktv_id, device_id, times, song_id, new iBanner(){
 
